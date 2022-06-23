@@ -1,0 +1,4 @@
+---
+dbpassword: somepassword #not the real password
+pghost: myweek6psqlflexibleserver.postgres.database.azure.com
+host_url: http://40.121.1.83:8080

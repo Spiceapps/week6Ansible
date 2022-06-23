@@ -1,0 +1,10 @@
+[Unit]
+Description=Weightapp
+
+[Service]
+EnvironmentFile=/home/azureadmin/weightapp/.env
+ExecStart=/opt/node/bin/node /home/azureadmin/weightapp/src/index.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

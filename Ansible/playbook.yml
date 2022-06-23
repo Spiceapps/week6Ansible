@@ -1,0 +1,69 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+          - ~/var.yml
+  tasks:
+
+  - name: Update ubuntu repos
+    apt:
+        upgrade: 'True'
+        update_cache: yes
+
+  - name: Update specific repos
+    apt:
+      name: ['git', 'curl', 'npm']
+      state: present
+
+  - name: Clone a github repository
+    git:
+      repo: https://github.com/Spiceapps/bootcamp-app.git
+      dest: ~/weightapp
+      clone: yes
+      update: no
+
+  - name: initialize the app
+    shell:
+     cmd: npm init -y
+     chdir: /home/azureadmin/weightapp
+
+  - name: install hapi packages
+    shell:
+    cmd: npm install
+    chdir: /home/azureadmin/weightapp
+
+  - name: install nodemon
+    shell:
+      cmd: npm install --save-dev nodemon@2
+      chdir: /home/azureadmin/weightapp
+
+  - name: fix package dependencies
+    shell:
+      cmd: npm audit fix
+      chdir: /home/azureadmin/weightapp
+
+  - name: Run a script to install nvm
+    script: /home/azureadmin/install_nvm.sh
+
+  - name: send .env to target hosts with vars
+    ansible.builtin.template:
+      src: /home/azureadmin/.env
+      dest: /home/azureadmin/weightapp
+      owner: azureadmin
+      group: azureadmin
+      mode: '0644'
+
+  - name: send weightapp.service to target hosts systemd
+    ansible.builtin.template:
+      src: /home/azureadmin/weightapp.service
+      dest: /lib/systemd/system/weightapp.service
+      owner: root
+      group: root
+      mode: '0655'
+
+  - name: Make sure a service unit is running
+    ansible.builtin.systemd:
+      state: started
+      name: weightapp
+      daemon_reload: yes
+      enabled: yes
