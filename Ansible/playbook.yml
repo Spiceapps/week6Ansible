@@ -53,6 +53,11 @@
       group: azureadmin
       mode: '0644'
 
+    - name: initialize the db
+    shell:
+     cmd: npm run initdb
+     chdir: /home/azureadmin/weightapp
+
   - name: send weightapp.service to target hosts systemd
     ansible.builtin.template:
       src: /home/azureadmin/weightapp.service
