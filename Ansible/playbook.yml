@@ -18,7 +18,7 @@
   - name: Clone a github repository
     git:
       repo: https://github.com/Spiceapps/bootcamp-app.git
-      dest: ~/weightapp
+      dest: /home/azureadmin/weightapp
       clone: yes
       update: no
 

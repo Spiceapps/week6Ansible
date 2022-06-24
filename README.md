@@ -1,4 +1,10 @@
 <!-- BEGIN_TF_DOCS -->
+## Summary
+This is an improved version of last week's task. it includes a managed DB instead of a VM, and the VMs are done with a module.
+I had a problem with the password generator output, so i'm using input variables instead this time.
+
+the two environments are generated using Terraform Workspaces, and with separate .tfvar files.
+
 ## Requirements
 
 | Name | Version |
