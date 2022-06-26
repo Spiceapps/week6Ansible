@@ -6,7 +6,7 @@
 PORT=8080
 HOST={{ ansible_default_ipv4.address }}
 # Postgres configuration
-PGHOST={{ pghost }}myweek6psqlflexibleserver.postgres.database.azure.com
+PGHOST={{ pghost }}
 PGUSERNAME=azureadmin
 PGDATABASE=db
 PGPASSWORD={{ dbpassword }}
