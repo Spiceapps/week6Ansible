@@ -15,6 +15,6 @@ HOST_URL={{ host_url }}
 COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
 NODE_ENV=development
 # Okta configuration
-OKTA_ORG_URL=https://dev-47188681.okta.com
-OKTA_CLIENT_ID=0oa53fdfknXftEYr35d7
-OKTA_CLIENT_SECRET=2K7l7KWK4mhaUdI4t1UCgo2Q4jJK1gDw1PbE9fpr
+OKTA_ORG_URL={{  oktaurl  }}
+OKTA_CLIENT_ID={{  oktaclientid  }}
+OKTA_CLIENT_SECRET={{  oktasecret  }}
